@@ -105,5 +105,7 @@ namespace MyVeryFirstCarSite
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
+
+        //white space
     }
 }
