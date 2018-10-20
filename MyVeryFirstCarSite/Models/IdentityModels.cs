@@ -37,7 +37,9 @@ namespace MyVeryFirstCarSite.Models
         public DbSet<Item> Items { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<VehicleType> VehicleTypes { get; set; }
-
+        public DbSet<VehicleLinkText> VehicleLinkTexts { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<VehicleItem> VehicleItems { get; set; }
 
     }
 }
