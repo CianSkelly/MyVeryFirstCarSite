@@ -200,6 +200,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Entities\ItemType.cs" />
     <Compile Include="Entities\Item.cs" />
+    <Compile Include="Entities\SubscriptionVehicle.cs" />
+    <Compile Include="Entities\UserSubscription.cs" />
     <Compile Include="Entities\VehicleItem.cs" />
     <Compile Include="Entities\Subscription.cs" />
     <Compile Include="Entities\VehicleLinkText.cs" />
