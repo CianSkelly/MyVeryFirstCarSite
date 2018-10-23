@@ -1,0 +1,46 @@
+﻿@model MyVeryFirstCarSite.Areas.Admin.Models.SmallButtonModel
+@using MyVeryFirstCarSite.Areas.Admin.Models;
+
+@*keeps the button over on the right ahnd side of the page:*@
+<td style="width:120px;">
+    <div class="btn-group" role="group">
+        @Html.Partial("_SmallButtonPartial",
+       new SmallButtonModel
+       {
+           Action = "Edit",
+           ButtonType = "btn-primary",
+           Glyph = "pencil",
+           Text = "Edit button",
+           Id = Model.Id,
+           ItemId = Model.ItemId,
+           VehicleId = Model.VehicleId,
+           SubscriptionId = Model.SubscriptionId
+       })
+
+        @Html.Partial("_SmallButtonPartial",
+      new SmallButtonModel
+      {
+          Action = "Details",
+          ButtonType = "btn-success",
+          Glyph = "list",
+          Text = "Detail button",
+          Id = Model.Id,
+          ItemId = Model.ItemId,
+          VehicleId = Model.VehicleId,
+          SubscriptionId = Model.SubscriptionId
+      })
+
+        @Html.Partial("_SmallButtonPartial",
+      new SmallButtonModel
+      {
+          Action = "Delete",
+          ButtonType = "btn-danger",
+          Glyph = "trash",
+          Text = "Delete button",
+          Id = Model.Id,
+          ItemId = Model.ItemId,
+          VehicleId = Model.VehicleId,
+          SubscriptionId = Model.SubscriptionId
+      })
+    </div>
+</td>
