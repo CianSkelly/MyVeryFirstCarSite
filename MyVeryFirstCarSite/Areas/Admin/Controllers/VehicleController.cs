@@ -10,6 +10,8 @@ using System.Web.Mvc;
 using MyVeryFirstCarSite.Entities;
 using MyVeryFirstCarSite.Models;
 using MyVeryFirstCarSite.Areas.Admin.Extensions;
+using MyVeryFirstCarSite.Areas.Admin.Models;
+using System.Data.Entity;
 
 namespace MyVeryFirstCarSite.Areas.Admin.Controllers
 {
@@ -21,8 +23,8 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers
         public async Task<ActionResult> Index()
         {
             var vehicles = await db.Vehicles.ToListAsync();
-            var model = vehicles.Convert(db);
-            return View(model.Result);
+            var model = await vehicles.Convert(db);
+            return View(model);
         }
 
         // GET: Admin/Vehicle/Details/5
@@ -41,9 +43,14 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers
         }
 
         // GET: Admin/Vehicle/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            return View();
+            var model = new VehicleModel
+            {
+                VehicleLinkTexts = await db.VehicleLinkTexts.ToListAsync(),
+                VehicleTypes = await db.VehicleTypes.ToListAsync()
+            };
+            return View(model);
         }
 
         // POST: Admin/Vehicle/Create
@@ -75,7 +82,10 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(vehicle);
+            var veh = new List<Vehicle>();
+            veh.Add(vehicle);
+            var VehicleModel = await veh.Convert(db);
+            return View(VehicleModel.First());
         }
 
         // POST: Admin/Vehicle/Edit/5
