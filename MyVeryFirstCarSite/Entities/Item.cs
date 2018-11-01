@@ -22,10 +22,12 @@ namespace MyVeryFirstCarSite.Entities
         [MaxLength(1024)]
         public string Url { get; set; }
         [MaxLength(1024)]
+        [DisplayName("Image Url")]
         public string ImageUrl { get; set; }
         [AllowHtml]
         public string HTML { get; set; }
         [DefaultValue(0)]
+        [DisplayName("Wait Days")]
         public int WaitDays { get; set; }
         public string HTMLShort {
             get
@@ -37,7 +39,7 @@ namespace MyVeryFirstCarSite.Entities
         public int ItemTypeId { get; set; }
         public int SectionId { get; set; }
         public int PartId { get; set; }
-        public int IsFree { get; set; }
+        public bool IsFree { get; set; }
         //used the following ICollections to allow lazy loading
         //the use of the "DisplayName" attribute is so the text that's displayed is better for the user - it's "Item Type" as opposed to "ItemTypes"
         [DisplayName("Item Type")]
