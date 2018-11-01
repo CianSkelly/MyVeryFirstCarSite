@@ -21,7 +21,9 @@ namespace MyVeryFirstCarSite.Areas.Admin.Models
         public string ImageUrl { get; set; }
         public int VehicleLinkTextId { get; set; }
         public int VehicleTypeId { get; set; }
+        [DisplayName("Vehicle Link Text")]
         public ICollection<VehicleLinkText> VehicleLinkTexts { get; set; }
+        [DisplayName("Vehicle Type")]
         public ICollection<VehicleType> VehicleTypes { get; set; }
         public string VehicleType {
             get
