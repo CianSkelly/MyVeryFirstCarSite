@@ -1,4 +1,4 @@
-﻿@model MyVeryFirstCarSite.Entities.Item
+﻿@model MyVeryFirstCarSite.Areas.Admin.Models.VehicleModel
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Item</h4>
+    <h4>Product</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -26,13 +26,7 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Url)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Url)
-        </dd>
+        
 
         <dt>
             @Html.DisplayNameFor(model => model.ImageUrl)
@@ -43,59 +37,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HTML)
+            @Html.DisplayNameFor(model => model.VehicleTypes)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.HTML)
+            @Html.DisplayFor(model => model.VehicleType)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.WaitDays)
+            @Html.DisplayNameFor(model => model.VehicleLinkTexts)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.WaitDays)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VehicleId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VehicleId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemTypeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ItemTypeId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SectionId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SectionId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PartId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PartId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsFree)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsFree)
+            @Html.DisplayFor(model => model.VehicleLinkText)
         </dd>
 
     </dl>

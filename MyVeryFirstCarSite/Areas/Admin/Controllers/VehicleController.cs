@@ -39,7 +39,8 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(vehicle);
+            var model = await vehicle.Convert(db);
+            return View(model);
         }
 
         // GET: Admin/Vehicle/Create

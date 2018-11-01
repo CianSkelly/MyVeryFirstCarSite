@@ -36,6 +36,31 @@ namespace MyVeryFirstCarSite.Areas.Admin.Extensions
                        VehicleTypes = types
                    };
         }
-            
+
+        public static async Task<VehicleModel> Convert(this Vehicle vehicle, ApplicationDbContext db)
+        {
+
+            var text = await db.VehicleLinkTexts.FirstOrDefaultAsync(v => v.Id.Equals(vehicle.VehicleLinkTextId));
+            var type = await db.VehicleTypes.FirstOrDefaultAsync(v => v.Id.Equals(vehicle.VehicleTypeId));
+
+            var model = new VehicleModel
+                   {
+                       Id = vehicle.Id,
+                       Title = vehicle.Title,
+                       Description = vehicle.Description,
+                       ImageUrl = vehicle.ImageUrl,
+                       VehicleLinkTextId = vehicle.VehicleLinkTextId,
+                       VehicleTypeId = vehicle.VehicleTypeId,
+                       VehicleLinkTexts = new List<VehicleLinkText>(),
+                       VehicleTypes = new List<VehicleType>()
+                   };
+            model.VehicleLinkTexts.Add(text);
+            model.VehicleTypes.Add(type);
+
+            return model;
+        }
+
+
     }
+
 }
