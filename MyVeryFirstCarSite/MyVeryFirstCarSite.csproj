@@ -199,7 +199,9 @@
     <Compile Include="Areas\Admin\Controllers\ItemTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PartController.cs" />
     <Compile Include="Areas\Admin\Controllers\SectionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SubscriptionController.cs" />
     <Compile Include="Areas\Admin\Controllers\VehicleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VehicleItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\VehicleLinkTextController.cs" />
     <Compile Include="Areas\Admin\Controllers\VehicleTypeController.cs" />
     <Compile Include="Areas\Admin\Extensions\ConversionExtensions.cs" />
@@ -296,6 +298,16 @@
     <Content Include="Areas\Admin\Views\Vehicle\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Vehicle\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Vehicle\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscription\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscription\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscription\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscription\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscription\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleItem\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleItem\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleItem\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleItem\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleItem\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
