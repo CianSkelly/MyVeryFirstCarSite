@@ -16,7 +16,7 @@ namespace MyVeryFirstCarSite.Extensions
                    {
                        Text = item.GetPropertyValue("Title"),
                        Value = item.GetPropertyValue("Id"),
-                       Selected = item.GetPropertyValue("Title")
+                       Selected = item.GetPropertyValue("Id")
                        .Equals(selectedValue.ToString())
                    };
         }

@@ -49,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -205,7 +206,9 @@
     <Compile Include="Areas\Admin\Controllers\VehicleLinkTextController.cs" />
     <Compile Include="Areas\Admin\Controllers\VehicleTypeController.cs" />
     <Compile Include="Areas\Admin\Extensions\ConversionExtensions.cs" />
+    <Compile Include="Areas\Admin\Models\EditButtonModel.cs" />
     <Compile Include="Areas\Admin\Models\SmallButtonModel.cs" />
+    <Compile Include="Areas\Admin\Models\VehicleItemModel.cs" />
     <Compile Include="Areas\Admin\Models\VehicleModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -308,6 +311,7 @@
     <Content Include="Areas\Admin\Views\VehicleItem\Details.cshtml" />
     <Content Include="Areas\Admin\Views\VehicleItem\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\VehicleItem\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_EditButtonDetailPartial.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

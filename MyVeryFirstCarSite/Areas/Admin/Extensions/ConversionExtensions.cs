@@ -8,6 +8,7 @@ using System.Collections;
 using MyVeryFirstCarSite.Entities;
 using MyVeryFirstCarSite.Models;
 using System.Data.Entity;
+using System.Transactions;
 
 namespace MyVeryFirstCarSite.Areas.Admin.Extensions
 {
@@ -60,7 +61,91 @@ namespace MyVeryFirstCarSite.Areas.Admin.Extensions
             return model;
         }
 
+        public static async Task<IEnumerable<VehicleItemModel>> Convert(this IQueryable<VehicleItem> vehicleItems, ApplicationDbContext db)
+        {
+            if (vehicleItems.Count().Equals(0))
+                return new List<VehicleItemModel>();
 
+        //"vi" below is a vehicle item
+        //the link query-for each vehicle item in the collection we want to create a new vehicle item model for each of the vehcle items
+            return await(from vi in vehicleItems
+                   select new VehicleItemModel
+                   {
+                       ItemId = vi.ItemId,
+                       VehicleId = vi.VehicleId,
+                   //below I'm geting the title for the item that matches the item id so that the text is returned not just the ID value
+                       ItemTitle = db.Items.FirstOrDefault(i => i.Id.Equals(vi.ItemId)).Title,
+                   //same thing for the vehicle title below...
+                       VehicleTitle = db.Vehicles.FirstOrDefault(v => v.Id.Equals(vi.VehicleId)).Title
+                   }).ToListAsync();
+        }
+
+        //in the below convert method I take a vehicle item and conert it in to a vehicle item model using the application
+        //db context to fill the collections and use the vehicle item thats sent in to fill the item id and vehicle id properties
+        //and then return the model
+        public static async Task<VehicleItemModel> Convert(this VehicleItem vehicleItem, ApplicationDbContext db,
+            bool addListData = true)
+        {
+            var model = new VehicleItemModel
+            {
+                ItemId = vehicleItem.ItemId,
+                VehicleId = vehicleItem.VehicleId,
+                Items = addListData ? await db.Items.ToListAsync() : null,
+                Vehicles = addListData ? await db.Vehicles.ToListAsync() : null,
+                ItemTitle = (await db.Items.FirstOrDefaultAsync( i => 
+                    i.Id.Equals (vehicleItem.ItemId))).Title,
+                VehicleTitle = (await db.Vehicles.FirstOrDefaultAsync (v =>
+                    v.Id.Equals(vehicleItem.VehicleId))).Title
+            };
+
+            return model;
+        }
+
+        public static async Task<bool> CanChange(this VehicleItem vehicleItem, ApplicationDbContext db)
+        {
+            var oldVI = await db.VehicleItems.CountAsync(vi => vi.VehicleId.Equals(vehicleItem.OldVehicleId) &&
+            vi.ItemId.Equals(vehicleItem.OldItemId));
+
+            var newVI = await db.VehicleItems.CountAsync(vi => vi.VehicleId.Equals(vehicleItem.VehicleId) &&
+            vi.ItemId.Equals(vehicleItem.ItemId));
+
+            return oldVI.Equals(1) && newVI.Equals(0);
+        }
+
+        public static async Task Change(this VehicleItem vehicleItem, ApplicationDbContext db)
+        {
+            var oldVehicleItem = await db.VehicleItems.FirstOrDefaultAsync(
+                vi => vi.VehicleId.Equals(vehicleItem.OldVehicleId) &&
+                vi.ItemId.Equals(vehicleItem.OldItemId));
+
+            var newVehicleItem = await db.VehicleItems.FirstOrDefaultAsync(
+                vi => vi.VehicleId.Equals(vehicleItem.VehicleId) &&
+                vi.ItemId.Equals(vehicleItem.ItemId));
+
+            if(oldVehicleItem != null && newVehicleItem == null)
+            {
+                newVehicleItem = new VehicleItem
+                {
+                    ItemId = vehicleItem.ItemId,
+                    VehicleId = vehicleItem.VehicleId
+                };
+
+                using (var transaction = new TransactionScope(
+                    TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    try
+                    {
+                        db.VehicleItems.Remove(oldVehicleItem);
+                        db.VehicleItems.Add(newVehicleItem);
+
+                        await db.SaveChangesAsync();
+                        transaction.Complete();
+                    }
+                    catch
+                    {transaction.Dispose(); }
+                }
+            }
+        }
     }
 
 }
