@@ -1,0 +1,54 @@
+﻿@model MyVeryFirstCarSite.Areas.Admin.Models.SubscriptionVehicleModel
+@using MyVeryFirstCarSite.Extensions
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Subscription Vehicle</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @*we need the following two values to do a lookup in the database on the Edit action when the submit button is clicked*@
+    @*1st checking that the old values exist in the database before removing them and adding the new values*@
+    @Html.Hidden("OldVehicleID", Model.VehicleId)
+    @Html.Hidden("OldSubscriptionId", Model.SubscriptionId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vehicles, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.VehicleId, Model.Vehicles.ToSelectListItem(Model.VehicleId),
+            new { @class = "form-control" } )
+            @Html.ValidationMessageFor(model => model.VehicleId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Subscriptions, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(
+                model => model.SubscriptionId, 
+                Model.Subscriptions.ToSelectListItem(Model.SubscriptionId),
+                new { @class = "form-control" } )
+            @Html.ValidationMessageFor(model => model.SubscriptionId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.Partial("_BackToListButtonPartial")
+</div>

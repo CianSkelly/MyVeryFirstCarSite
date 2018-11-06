@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MyVeryFirstCarSite.Areas.Admin.Models.VehicleItemModel>
+﻿@model IEnumerable<MyVeryFirstCarSite.Areas.Admin.Models.SubscriptionVehicleModel>
 @using MyVeryFirstCarSite.Areas.Admin.Models;
 
 @{
@@ -16,7 +16,7 @@
             @Html.DisplayNameFor(model => model.VehicleTitle)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ItemTitle)
+            @Html.DisplayNameFor(model => model.SubscriptionTitle)
         </th>
         <th></th>
     </tr>
@@ -28,11 +28,10 @@
                 @Html.DisplayFor(modelItem => item.VehicleTitle)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ItemTitle)
+                @Html.DisplayFor(modelItem => item.SubscriptionTitle)
             </td>
 
-            @Html.Partial("_TableButtonsPartial", new SmallButtonModel
-                { ItemId = item.ItemId, VehicleId = item.VehicleId })
+            @Html.Partial("_TableButtonsPartial", new SmallButtonModel { SubscriptionId = item.SubscriptionId, VehicleId = item.VehicleId })
         </tr>
     }
 

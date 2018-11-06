@@ -1,0 +1,23 @@
+﻿@model MyVeryFirstCarSite.Areas.Admin.Models.SubscriptionVehicleModel
+@using MyVeryFirstCarSite.Areas.Admin.Models
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Subscription Vehicle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(m => m.SubscriptionTitle)</dt>
+        <dd>@Html.DisplayFor(m => m.SubscriptionTitle)</dd>
+        <dt>@Html.DisplayNameFor(m => m.VehicleTitle)</dt>
+        <dd>@Html.DisplayFor(m => m.VehicleTitle)</dd>
+    </dl>
+</div>
+<p>
+    @Html.Partial("_EditButtonDetailPartial", 
+        new EditButtonModel { ItemId = Model.SubscriptionId, VehicleId = Model.VehicleId})
+    @Html.Partial("_BackToListButtonPartial")
+</p>

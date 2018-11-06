@@ -1,0 +1,50 @@
+﻿@model MyVeryFirstCarSite.Areas.Admin.Models.SubscriptionVehicleModel
+    @using MyVeryFirstCarSite.Extensions
+
+
+    @{
+        ViewBag.Title = "Create";
+    }
+
+    <h2>Create</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>SubscriptionVehicle</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Vehicles, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.VehicleId, Model.Vehicles.ToSelectListItem(Model.VehicleId),
+                    new { @class = "form-control" } )
+                    @Html.ValidationMessageFor(model => model.VehicleId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Subscriptions, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(
+                        model => model.SubscriptionId,
+                        Model.Subscriptions.ToSelectListItem(Model.SubscriptionId),
+                        new { @class = "form-control" } )
+                    @Html.ValidationMessageFor(model => model.SubscriptionId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.Partial("_BackToListButtonPartial")
+    </div>

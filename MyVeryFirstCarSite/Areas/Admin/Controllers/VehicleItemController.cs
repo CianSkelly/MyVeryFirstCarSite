@@ -88,7 +88,7 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "VehicleId,ItemId, OldVehicleId,OldItemId")] VehicleItem vehicleItem)
+        public async Task<ActionResult> Edit([Bind(Include = "VehicleId,ItemId,OldVehicleId,OldItemId")] VehicleItem vehicleItem)
         {
             if (ModelState.IsValid)
             {
