@@ -170,7 +170,6 @@ namespace MyVeryFirstCarSite.Areas.Admin.Extensions
                           }).ToListAsync();
         }
 
-        
         public static async Task<SubscriptionVehicleModel> Convert(
             this SubscriptionVehicle subscriptionVehicle, ApplicationDbContext db,
             bool addListData = true)

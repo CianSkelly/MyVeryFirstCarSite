@@ -101,6 +101,7 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers
                 var canChange = await subscriptionVehicle.CanChange(db);
                 if (canChange)
                     await subscriptionVehicle.Change(db);
+
                 return RedirectToAction("Index");
             }
             return View(subscriptionVehicle);
@@ -120,13 +121,14 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(subscriptionVehicle.Convert(db));
+            return View(await subscriptionVehicle.Convert(db));
         }
 
         // POST: Admin/SubscriptionVehicle/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int subscriptionId, int vehicleId)
+        public async Task<ActionResult> DeleteConfirmed(
+            int subscriptionId, int vehicleId)
         {
             SubscriptionVehicle subscriptionVehicle = 
                 await GetSubscriptionVehicle(subscriptionId, vehicleId);

@@ -31,7 +31,8 @@
                 @Html.DisplayFor(modelItem => item.SubscriptionTitle)
             </td>
 
-            @Html.Partial("_TableButtonsPartial", new SmallButtonModel { SubscriptionId = item.SubscriptionId, VehicleId = item.VehicleId })
+            @Html.Partial("_TableButtonsPartial", 
+                new SmallButtonModel { SubscriptionId = item.SubscriptionId, VehicleId = item.VehicleId })
         </tr>
     }
 
