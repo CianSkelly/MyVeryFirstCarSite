@@ -68,7 +68,6 @@ namespace MyVeryFirstCarSite.Areas.Admin.Extensions
         {
             if (vehicleItems.Count().Equals(0))
                 return new List<VehicleItemModel>();
-
         //"vi" below is a vehicle item
         //the link query-for each vehicle item in the collection we want to create a new vehicle item model for each of the vehcle items
             return await(from vi in vehicleItems
@@ -104,12 +103,15 @@ namespace MyVeryFirstCarSite.Areas.Admin.Extensions
             return model;
         }
 
-        public static async Task<bool> CanChange(this VehicleItem vehicleItem, ApplicationDbContext db)
+        public static async Task<bool> CanChange
+            (this VehicleItem vehicleItem, ApplicationDbContext db)
         {
-            var oldVI = await db.VehicleItems.CountAsync(vi => vi.VehicleId.Equals(vehicleItem.OldVehicleId) &&
+            var oldVI = await db.VehicleItems.CountAsync(vi => 
+            vi.VehicleId.Equals(vehicleItem.OldVehicleId) &&
             vi.ItemId.Equals(vehicleItem.OldItemId));
 
-            var newVI = await db.VehicleItems.CountAsync(vi => vi.VehicleId.Equals(vehicleItem.VehicleId) &&
+            var newVI = await db.VehicleItems.CountAsync(vi => 
+            vi.VehicleId.Equals(vehicleItem.VehicleId) &&
             vi.ItemId.Equals(vehicleItem.ItemId));
 
             return oldVI.Equals(1) && newVI.Equals(0);
@@ -171,7 +173,8 @@ namespace MyVeryFirstCarSite.Areas.Admin.Extensions
         }
 
         public static async Task<SubscriptionVehicleModel> Convert(
-            this SubscriptionVehicle subscriptionVehicle, ApplicationDbContext db,
+            this SubscriptionVehicle subscriptionVehicle, 
+            ApplicationDbContext db,
             bool addListData = true)
         {
             var model = new SubscriptionVehicleModel
@@ -189,7 +192,8 @@ namespace MyVeryFirstCarSite.Areas.Admin.Extensions
             return model;
         }
 
-        public static async Task<bool> CanChange(this SubscriptionVehicle subscriptionVehicle, ApplicationDbContext db)
+        public static async Task<bool> CanChange(
+            this SubscriptionVehicle subscriptionVehicle, ApplicationDbContext db)
         {
             var oldSP = await db.SubscriptionVehicles.CountAsync(sp => 
             sp.VehicleId.Equals(subscriptionVehicle.OldVehicleId) &&
@@ -197,7 +201,7 @@ namespace MyVeryFirstCarSite.Areas.Admin.Extensions
 
             var newSP = await db.SubscriptionVehicles.CountAsync(sp => 
             sp.VehicleId.Equals(subscriptionVehicle.VehicleId) &&
-            sp.SubscriptionId.Equals(subscriptionVehicle.OldSubscriptionId));
+            sp.SubscriptionId.Equals(subscriptionVehicle.SubscriptionId));
 
             return oldSP.Equals(1) && newSP.Equals(0);
         }
