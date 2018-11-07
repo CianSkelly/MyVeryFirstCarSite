@@ -15,6 +15,7 @@ using System.Data.Entity;
 
 namespace MyVeryFirstCarSite.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class VehicleController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

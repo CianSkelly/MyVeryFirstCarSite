@@ -15,6 +15,7 @@ using MyVeryFirstCarSite.Areas.Admin.Models;
 
 namespace MyVeryFirstCarSite.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SubscriptionVehicleController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -14,6 +14,7 @@ using MyVeryFirstCarSite.Areas.Admin.Extensions;
 
 namespace MyVeryFirstCarSite.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class VehicleItemController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
