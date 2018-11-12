@@ -10,10 +10,23 @@ namespace MyVeryFirstCarSite.Entities
     [Table("VehicleType")]
     public class VehicleType
     {
+        private string title;
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [MaxLength(50)]
+        [Required]
+        public string Title {
+            get { return Make + " " + this.Model; }
+            set { this.title = this.Make + " " + this.Model; } }
         [MaxLength(25)]
         [Required]
-        public string Title { get; set; }
+        public string Make { get; set; }
+        [MaxLength(25)]
+        [Required]
+        public string Model { get; set; }
+
+        public virtual ICollection <Vehicle> Vehicles { get; set; }
+
     }
 }

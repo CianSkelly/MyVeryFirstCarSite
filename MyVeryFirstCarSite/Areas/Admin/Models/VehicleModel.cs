@@ -10,6 +10,9 @@ namespace MyVeryFirstCarSite.Areas.Admin.Models
 {
     public class VehicleModel
     {
+        //"Id,Title,Description,ImageUrl,CubicCapicity,
+        //FuelType,Colour,CountySoldFrom,ManufacturerYear,
+        //NumberOfPreviousOwners,VehicleLinkTextId,VehicleTypeId"
         public int Id { get; set; }
         [MaxLength(255)]
         [Required]
@@ -21,6 +24,24 @@ namespace MyVeryFirstCarSite.Areas.Admin.Models
         public string ImageUrl { get; set; }
         public int VehicleLinkTextId { get; set; }
         public int VehicleTypeId { get; set; }
+        [Required]
+        [DisplayName("Price")]
+        public string Price { get; set; }
+        [Required]
+        [DisplayName("Cubic Capicity")]
+        public CC CubicCapicity { get; set; }
+        [Required]
+        [DisplayName("Fuel Type")]
+        public Fuel FuelType { get; set; }
+        [DisplayName("Colour")]
+        public string Colour { get; set; }
+        [DisplayName("County")]
+        public County CountySoldFrom { get; set; }
+        [Range(1980, 2018)]
+        [DisplayName("Year")]
+        public int ManufacturerYear { get; set; }
+        [DisplayName("Number Of Previous Owners")]
+        public int NumberOfPreviousOwners { get; set; }
         [DisplayName("Vehicle Link Text")]
         public ICollection<VehicleLinkText> VehicleLinkTexts { get; set; }
         [DisplayName("Vehicle Type")]

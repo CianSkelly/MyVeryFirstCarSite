@@ -49,6 +49,6 @@ namespace MyVeryFirstCarSite.Models
         public DbSet<SubscriptionVehicle> SubscriptionVehicles { get; set; }
         public DbSet<UserSubscription> UserSubscriptions { get; set; }
 
-
+        public System.Data.Entity.DbSet<MyVeryFirstCarSite.Areas.Admin.Models.VehicleModel> VehicleModels { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Product</h4>
+    <h4>VehicleModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -35,11 +35,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.VehicleTypes)
+            @Html.DisplayNameFor(model => model.VehicleLinkTextId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.VehicleType)
+            @Html.DisplayFor(model => model.VehicleLinkTextId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleTypeId)
         </dd>
 
         <dt>
@@ -51,19 +59,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ManufacturerYear)
+            @Html.DisplayNameFor(model => model.CubicCapicity)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ManufacturerYear)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Colour)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Colour)
+            @Html.DisplayFor(model => model.CubicCapicity)
         </dd>
 
         <dt>
@@ -72,6 +72,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.FuelType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Colour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Colour)
         </dd>
 
         <dt>
@@ -87,12 +95,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CubicCapicity)
+            @Html.DisplayFor(model => model.ManufacturerYear)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CubicCapicity)
-        </dt>
 
         <dt>
             @Html.DisplayNameFor(model => model.NumberOfPreviousOwners)
@@ -102,13 +106,9 @@
             @Html.DisplayFor(model => model.NumberOfPreviousOwners)
         </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.VehicleLinkText)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.Partial("_EditButtonPartial", Model.Id)
-    @Html.Partial("_BackToListButtonPartial")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

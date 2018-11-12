@@ -49,13 +49,22 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title")] VehicleType vehicleType)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Make,Model")] VehicleType vehicleType)
+        //before chaning the above to Make and model
+        //public async Task<ActionResult> Create([Bind(Include = "Id,Title")] VehicleType vehicleType)
         {
             if (ModelState.IsValid)
             {
-                db.VehicleTypes.Add(vehicleType);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (db.VehicleTypes.FirstOrDefault(t => t.Title.ToLower() == vehicleType.Title.ToLower()) == null)
+                {
+                    db.VehicleTypes.Add(vehicleType);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "A vehicle with this make and model already exists.");
+                }
             }
 
             return View(vehicleType);
@@ -81,13 +90,20 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title")] VehicleType vehicleType)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Make,Model")] VehicleType vehicleType)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(vehicleType).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (db.VehicleTypes.FirstOrDefault(t => t.Title.ToLower() == vehicleType.Title.ToLower()) == null)
+                {
+                    db.Entry(vehicleType).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "A vehicle with this make and model already exists.");
+                }
             }
             return View(vehicleType);
         }
