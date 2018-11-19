@@ -20,8 +20,20 @@
         </th>
 
         <th>
-            @Html.DisplayNameFor(model => model.VehicleLinkTexts)
+            @Html.DisplayNameFor(model => model.Price)
         </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ManufacturerYear)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.CountySoldFrom)
+        </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.VehicleLinkTexts)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.VehicleTypes)
         </th>
@@ -32,28 +44,40 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.VehicleLinkText)
-                (@{@Html.DisplayFor(modelItem => item.VehicleLinkTextId)})
+        <th>
+            @Html.DisplayFor(modelItem => item.Price)
+        </th>
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VehicleType)
-                (@{@Html.DisplayFor(modelItem => item.VehicleTypeId)})
-            </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.ManufacturerYear)
+        </th>
+
+        <th>
+            @Html.DisplayFor(modelItem => item.CountySoldFrom)
+        </th>
+
+        @*<td>
+            @Html.DisplayFor(modelItem => item.VehicleLinkText)
+            (@{@Html.DisplayFor(modelItem => item.VehicleLinkTextId)})
+
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleType)
+            (@{@Html.DisplayFor(modelItem => item.VehicleTypeId)})
+        </td>
 
 
-            @Html.Partial("_TableButtonsPartial", new SmallButtonModel { Id = item.Id })
+        @Html.Partial("_TableButtonsPartial", new SmallButtonModel { Id = item.Id })
 
-        </tr>
+    </tr>
     }
 
 </table>
