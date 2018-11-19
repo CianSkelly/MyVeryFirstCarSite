@@ -26,7 +26,7 @@ namespace MyVeryFirstCarSite.Areas.Admin.Models
         public int VehicleTypeId { get; set; }
         [Required]
         [DisplayName("Price")]
-        public string Price { get; set; }
+        public int Price { get; set; }
         [Required]
         [DisplayName("Cubic Capicity")]
         public CC CubicCapicity { get; set; }

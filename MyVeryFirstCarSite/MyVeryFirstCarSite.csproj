@@ -205,7 +205,6 @@
     <Compile Include="Areas\Admin\Controllers\VehicleController.cs" />
     <Compile Include="Areas\Admin\Controllers\VehicleItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\VehicleLinkTextController.cs" />
-    <Compile Include="Areas\Admin\Controllers\VehicleSearchModelController.cs" />
     <Compile Include="Areas\Admin\Controllers\VehicleTypeController.cs" />
     <Compile Include="Areas\Admin\Extensions\ConversionExtensions.cs" />
     <Compile Include="Areas\Admin\Models\EditButtonModel.cs" />
@@ -328,6 +327,8 @@
     <Content Include="Areas\Admin\Views\VehicleSearchModel\Details.cshtml" />
     <Content Include="Areas\Admin\Views\VehicleSearchModel\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\VehicleSearchModel\Index.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <None Include="Properties\PublishProfiles\MyVeryFirstCarSite - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -339,7 +340,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -378,6 +381,7 @@
     <Content Include="Views\Account\Create.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Home\SearchIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

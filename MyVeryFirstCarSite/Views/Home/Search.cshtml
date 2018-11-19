@@ -1,0 +1,78 @@
+﻿@model MyVeryFirstCarSite.Areas.Admin.Models.VehicleSearchModel
+@using MyVeryFirstCarSite.Extensions
+
+@{
+    ViewBag.Title = "Search Vehicles";
+}
+
+<h2>Search</h2>
+
+@using (Html.BeginForm("SearchIndex", "Home", FormMethod.Get))
+{
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Make)
+                @Html.EditorFor(model => model.Make, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Make, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Model)
+                @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                @Html.LabelFor(model => model.Price)
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.MinManufacturerYear)
+                @Html.EditorFor(model => model.MinManufacturerYear, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MinManufacturerYear, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.MaxManufacturerYear)
+                @Html.EditorFor(model => model.MaxManufacturerYear, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaxManufacturerYear, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.CountySoldFrom)
+                @Html.EnumDropDownListFor(model => model.CountySoldFrom, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CountySoldFrom, "", new { @class = "text-danger" })
+            </div>
+
+            @*<div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.Mileage)
+                    @Html.EnumDropDownListFor(model => model.Mileage, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Mileage, "", new { @class = "text-danger" })
+                </div>*@
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+
+}
+<p> </p>
+<div>
+    @Html.Partial("_BackToListButtonPartial")
+</div>
+
+
+

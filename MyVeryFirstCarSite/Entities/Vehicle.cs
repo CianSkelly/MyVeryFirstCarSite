@@ -30,7 +30,7 @@ namespace MyVeryFirstCarSite.Entities
         public int VehicleLinkTextId { get; set; }
         public int VehicleTypeId { get; set; }
         [Required]
-        public string Price { get; set; }
+        public int Price { get; set; }
         [Required]
         public CC CubicCapicity { get; set; }
         [Required]

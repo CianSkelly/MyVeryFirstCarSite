@@ -27,11 +27,21 @@ namespace MyVeryFirstCarSite.Areas.Admin.Extensions
 
             return from v in vehicles
                    select new VehicleModel
+                   //"Id,Title,Description,ImageUrl,CubicCapicity,
+                   //FuelType,Colour,CountySoldFrom,ManufacturerYear,
+                   //NumberOfPreviousOwners,VehicleLinkTextId,VehicleTypeId"
                    {
                        Id = v.Id,
                        Title = v.Title,
                        Description = v.Description,
                        ImageUrl = v.ImageUrl,
+                       CubicCapicity = v.CubicCapicity,
+                       FuelType = v.FuelType,
+                       Colour = v.Colour,
+                       Price = v.Price,
+                       CountySoldFrom = v.CountySoldFrom,
+                       ManufacturerYear = v.ManufacturerYear,
+                       NumberOfPreviousOwners = v.NumberOfPreviousOwners,
                        VehicleLinkTextId = v.VehicleLinkTextId,
                        VehicleTypeId = v.VehicleTypeId,
                        VehicleLinkTexts = texts,

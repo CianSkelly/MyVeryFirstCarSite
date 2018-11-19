@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MyVeryFirstCarSite.Areas.Admin.Models.VehicleModel>
+@using MyVeryFirstCarSite.Areas.Admin.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.Partial("_CreateButtonPartial")
+</p>
+<table class="table table-striped table-condensed">
+    <tr class="success">
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleLinkTexts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleTypes)
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleLinkText)
+                (@{@Html.DisplayFor(modelItem => item.VehicleLinkTextId)})
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleType)
+                (@{@Html.DisplayFor(modelItem => item.VehicleTypeId)})
+            </td>
+
+
+            @Html.Partial("_TableButtonsPartial", new SmallButtonModel { Id = item.Id })
+
+        </tr>
+    }
+
+</table>
