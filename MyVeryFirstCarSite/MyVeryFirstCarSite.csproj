@@ -248,10 +248,13 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\1stSmallCar.png" />
     <Content Include="Content\Images\2ndSmallCar.png" />
+    <Content Include="Content\Images\30pxHigh_aotu-car-small-car-transportation-wheel-icon--12.png" />
     <Content Include="Content\Images\3rdSmallCar.png" />
+    <Content Include="Content\Images\45pxHigh_aotu-car-small-car-transportation-wheel-icon--12.png" />
     <Content Include="Content\Logos\mazda.png" />
     <Content Include="Content\Logos\Toyota_628.png" />
     <Content Include="Content\Logos\Volkswagen-logo-2015-1920x1080.png" />
+    <Content Include="Content\navbar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
