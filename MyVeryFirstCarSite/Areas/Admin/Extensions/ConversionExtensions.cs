@@ -17,7 +17,8 @@ namespace MyVeryFirstCarSite.Areas.Admin.Extensions
         #region Vehicle
         //the conversion method takes an IEnumerable of vehicle and converts in to an IEnumerable of VehicleModel, 
         //we convert one collection in to another type of collection, and get data from the DB asynchronously
-        public static async Task<IEnumerable<VehicleModel>> Convert(this IEnumerable<Vehicle> vehicles, ApplicationDbContext db)
+        //added I to ApplicationDbComtext below
+        public static async Task<IEnumerable<VehicleModel>> Convert(this IEnumerable<Vehicle> vehicles, IApplicationDbContext db)
         {
             if (vehicles.Count().Equals(0))
                 return new List<VehicleModel>();
@@ -49,7 +50,8 @@ namespace MyVeryFirstCarSite.Areas.Admin.Extensions
                    };
         }
 
-        public static async Task<VehicleModel> Convert(this Vehicle vehicle, ApplicationDbContext db)
+        //added I to ApplicationDbComtext below
+        public static async Task<VehicleModel> Convert(this Vehicle vehicle, IApplicationDbContext db)
         {
 
             var text = await db.VehicleLinkTexts.FirstOrDefaultAsync(v => v.Id.Equals(vehicle.VehicleLinkTextId));

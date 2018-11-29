@@ -11,14 +11,24 @@ using MyVeryFirstCarSite.Entities;
 using MyVeryFirstCarSite.Models;
 using MyVeryFirstCarSite.Areas.Admin.Extensions;
 using MyVeryFirstCarSite.Areas.Admin.Models;
-using System.Data.Entity;
 
 namespace MyVeryFirstCarSite.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class VehicleController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        //private ApplicationDbContext db = new ApplicationDbContext();
+        //modified the line above (to below) for unit testing
+        private IApplicationDbContext db = new ApplicationDbContext();
+
+        //added for unit testing
+        public VehicleController() { }
+
+        //added for unit testing
+        public VehicleController(IApplicationDbContext context)
+        {
+            db = context;
+        }
 
         // GET: Admin/Vehicle
         public async Task<ActionResult> Index()
@@ -110,7 +120,8 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(vehicle).State = EntityState.Modified;
+                //db.Entry(vehicle).State = EntityState.Modified;
+                db.MarkAsModified(vehicle);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

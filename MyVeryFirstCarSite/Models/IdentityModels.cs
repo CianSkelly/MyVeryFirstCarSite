@@ -25,7 +25,9 @@ namespace MyVeryFirstCarSite.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
+    //the below was added to above after "public class ApplicationDbContext : IdentityDbContext<ApplicationUser>" for unit testing
+
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -50,5 +52,11 @@ namespace MyVeryFirstCarSite.Models
         public DbSet<UserSubscription> UserSubscriptions { get; set; }
 
         public System.Data.Entity.DbSet<MyVeryFirstCarSite.Areas.Admin.Models.VehicleModel> VehicleModels { get; set; }
+
+        //added below for unit testing
+        public void MarkAsModified(Object item)
+        {
+            Entry(item).State = EntityState.Modified;
+        }
     }
 }

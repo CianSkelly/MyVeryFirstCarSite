@@ -13,7 +13,20 @@ namespace MyVeryFirstCarSite.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        //private ApplicationDbContext db = new ApplicationDbContext();
+
+        //needed the below code to reference te fake data for unit 
+        //test as opposed to referencing the actual database data
+        private IApplicationDbContext db = new ApplicationDbContext();
+
+        //added for unit testing
+        public HomeController() { }
+
+        //added for unit testing
+        public HomeController(IApplicationDbContext context)
+        {
+            db = context;
+        }
 
         public ActionResult Index()
         {
