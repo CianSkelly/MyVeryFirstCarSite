@@ -1,5 +1,5 @@
-﻿@*if(Request.IsAuthenticated && User.IsInRole ("Admin"))
-{*@
+﻿@if(Request.IsAuthenticated && User.IsInRole ("Admin"))
+{
 <li class="dropdown" data-admin-menu>
     <a href="#">
         Admin
@@ -18,7 +18,8 @@
         <li class="dropdown-header">Maintenance of individual Vehicles</li>
         <li class="divider" />
         @*<li><a href="/Admin/Item">&nbsp;&nbsp;Item</a></li>*@
-        <li><a href="Admin/Vehicle">&nbsp;&nbsp;Vehicle</a></li>
+        <li><a href="~/Admin/Vehicle">&nbsp;&nbsp;Vehicle</a></li>
+        @*@Html.ActionLink("Vehicle", "Index", "Vehicle", new { area = "Admin"}, null)*@
         @*<li><a href="/Admin/Subscription">&nbsp;&nbsp;Subscription</a></li>*@
         @*<li class="divider" />*@
         @*<li class="dropdown-header">Connector Entities</li>
@@ -31,5 +32,5 @@
         <li> <a href="~/Account"> &nbsp;&nbsp; Users & Subscriptions</a>
     </ul>
 </li>
-@* } *@
+}
 
