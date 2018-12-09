@@ -70,25 +70,44 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,ImageUrl,CubicCapicity," +
-        //    "FuelType,Colour,CountySoldFrom,ManufacturerYear,NumberOfPreviousOwners,VehicleLinkTextId,VehicleTypeId")]
-
         public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,ImageUrl,CubicCapicity,FuelType,Price,Colour,CountySoldFrom,ManufacturerYear,NumberOfPreviousOwners,VehicleLinkTextId,VehicleTypeId")]
         Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
-                db.Vehicles.Add(vehicle);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (await db.Vehicles.AnyAsync(x => x.Description.ToLower().Equals(vehicle.Description.ToLower())))
+                {
+                    ModelState.AddModelError("", "A vehicle already exists with that description.");
+                }
+                else
+                {
+                    db.Vehicles.Add(vehicle);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
-
             var veh = new List<Vehicle>();
             veh.Add(vehicle);
             var VehicleModel = await veh.Convert(db);
             return View(VehicleModel.First());
             //return View(vehicle);
         }
+        //public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,ImageUrl,CubicCapicity,FuelType,Price,Colour,CountySoldFrom,ManufacturerYear,NumberOfPreviousOwners,VehicleLinkTextId,VehicleTypeId")]
+        //Vehicle vehicle)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Vehicles.Add(vehicle);
+        //        await db.SaveChangesAsync();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    var veh = new List<Vehicle>();
+        //    veh.Add(vehicle);
+        //    var VehicleModel = await veh.Convert(db);
+        //    return View(VehicleModel.First());
+        //    //return View(vehicle);
+        //}
 
         // GET: Admin/Vehicle/Edit/5
         public async Task<ActionResult> Edit(int? id)

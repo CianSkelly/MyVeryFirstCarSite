@@ -1,7 +1,7 @@
 ﻿@model MyVeryFirstCarSite.Areas.Admin.Models.SmallButtonModel
 @using MyVeryFirstCarSite.Areas.Admin.Models;
 
-@*keeps the button over on the right ahnd side of the page:*@
+@*keeps the button over on the right hand side of the page:*@
 <td style="width:120px;">
     <div class="btn-group" role="group">
         @Html.Partial("_SmallButtonPartial",
@@ -35,7 +35,7 @@
                })
         }
 
-            @if (Model.UserId != null && !Model.UserId.Equals(string.Empty))
+            @*@if (Model.UserId != null && !Model.UserId.Equals(string.Empty))
             {
                 @Html.Partial("_SmallButtonPartial",
                    new SmallButtonModel
@@ -50,7 +50,7 @@
                        SubscriptionId = Model.SubscriptionId,
                        UserId = Model.UserId
                    })
-            }
+            }*@
 
             @Html.Partial("_SmallButtonPartial",
           new SmallButtonModel

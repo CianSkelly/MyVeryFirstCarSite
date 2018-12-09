@@ -62,14 +62,16 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers.Tests
             TestApplicationDbContext tdb = new TestApplicationDbContext();
             Vehicle vehicleToNotBeDuplicated = new Vehicle
             {
+                Description = "Vehicle with same description",
                 Title = "Nissan Micra",
-                Price = 1250,
+                Price = 1500,
                 CubicCapicity = CC.cc1000,
                 FuelType = Fuel.Petrol
             };
 
             Vehicle vehicleToTryDuplicate = new Vehicle
             {
+                Description = "Vehicle with same description",
                 Title = "Nissan Micra",
                 Price = 1250,
                 CubicCapicity = CC.cc1000,
@@ -78,7 +80,6 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers.Tests
 
             //adding the vehicles to the "fake" database
             //I shouldn't be able to do this
-            tdb.Vehicles.Add(vehicleToNotBeDuplicated);
             tdb.Vehicles.Add(vehicleToTryDuplicate);
 
             //creating a controller
@@ -91,7 +92,7 @@ namespace MyVeryFirstCarSite.Areas.Admin.Controllers.Tests
 
             //Assert
             //we are checking that a view called Index is returned
-            Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
             //view Result for the cannot create
         }
 

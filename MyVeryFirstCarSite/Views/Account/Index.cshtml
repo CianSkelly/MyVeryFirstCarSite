@@ -2,10 +2,10 @@
 @using MyVeryFirstCarSite.Areas.Admin.Models;
 
 @{
-    ViewBag.Title = "Users & Subscriptions";
+    ViewBag.Title = "Users";
 }
 
-<h2>Users & Subscriptions</h2>
+<h2>Users</h2>
 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
 {
     <p>
