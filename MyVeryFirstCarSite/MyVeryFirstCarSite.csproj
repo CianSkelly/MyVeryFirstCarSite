@@ -332,6 +332,7 @@
     <Content Include="Areas\Admin\Views\VehicleSearchModel\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\VehicleSearchModel\Index.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LoginPartial.cshtml" />
     <None Include="Properties\PublishProfiles\MyVeryFirstCarSite - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
